@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('layouts/header'); -%>
+    <body>
+        <!-- Navigation-->
+        <%- include('layouts/navbar'); -%>
+        <!-- Page Header-->
+        <header class="masthead" style="background-color:rgb(43, 41, 41);">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>G Drive Test</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+   
+        <div class="col-md-10 col-lg-8 col-xl-7" style="margin-left: auto; margin-right: auto;">
+            
+            <% if (users) { %>
+                <% if(users.fname!="default"){ %>
+                <div class="post-preview">
+                   
+                        <h2 class="post-title">
+                           First Name= <%= users.fname %>
+                        </h2>
+                        <h2 class="post-title">
+                            Last Name= <%= users.lname %>
+                        </h2>
+                        <h3 class="post-subtitle">
+                           License Number= <%= users.license %>
+                        </h3>
+                        <h3 class="post-subtitle">
+                           Age= <%= users.age %>
+                        </h3>
+                        <h3 class="post-subtitle">
+                           Date Of Birth: <%= users.dob %>
+                        </h3>
+                        <h2 class="post-title">Car Details</h2>
+                        <h3 class="post-subtitle">
+                           Make: <%= users.make %>
+                        </h3>
+                        <h3 class="post-subtitle">
+                           Model: <%= users.model %>
+                        </h3>
+                        <h3 class="post-subtitle">
+                           Year: <%= users.year %>
+                        </h3>
+                        <h3 class="post-subtitle">
+                           Plate Number: <%= users.platenumber %>
+                        </h3>
+                   
+                </div>
+                <% }
+                else{ %>
+                    <p> User has not entered the information</p>
+                    <form action="/g2" method="get" style="width:70vw ;margin-left:auto; margin-right:auto;">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"
+                            id="sendMessageButton">Register</button>
+               <%  } 
+
+                 } else { %>
+
+                    <p> No user found</p>
+                    <form action="/g2" method="get" style="width:70vw ;margin-left:auto; margin-right:auto;">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"
+                            id="sendMessageButton">Register</button>
+                            
+                    </div>
+                </form>
+
+                <% } %>       
+                    
+              
+        <!-- Footer-->
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>
+    </body>
+</html>
+
+
+
+    

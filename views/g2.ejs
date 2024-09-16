@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('layouts/header'); -%>
+    <body>
+        <!-- Navigation-->
+        <%- include('layouts/navbar'); -%>
+        <!-- Page Header-->
+        <header class="masthead" style="background-color:rgb(43, 41, 41);">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>G2 Drive Test</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+        </header>
+        <!-- Main Content-->
+          <%
+          if(users.fname == "default"){-%>
+            <form action="/g2/store" method="POST" data-sb-form-api-token="API_TOKEN" style="width:70vw ;margin-left:auto; margin-right:auto;">
+                <h2>Please Enter all the details!</h2>
+                <div class="form-floating">
+                    <input class="form-control" id="name" name="fname"type="text" placeholder="Enter your name..." data-sb-validations="required" value=""/>
+                    <label for="fname">First_Name</label>
+                    <div class="invalid-feedback" data-sb-feedback="name:required">A First_name is required.</div>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" id="lname" name="lname"type="text" placeholder="Enter your name..." data-sb-validations="required" value="" />
+                    <label for="lname">Last_Name</label>
+                    <div class="invalid-feedback" data-sb-feedback="name:required">A Last_name is required.</div>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" id="license" name="license"type="text" placeholder="Enter your license number..." data-sb-validations="required" value=""/>
+                    <label for="license">License Number</label>
+                    <div class="invalid-feedback" data-sb-feedback="license:required">A License number is required and must be 8 characters</div>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" id="age" name="age"type="int" placeholder="Enter your age..." data-sb-validations="required" value="" />
+                    <label for="age">Age</label>
+                    <div class="invalid-feedback" data-sb-feedback="age:required">An Age is required and must be 8 characters</div>
+                </div></br>
+                
+               <h3>Enter Your Car Details Here:</h3>
+                <div class="form-floating">
+                    <input class="form-control" id="make" name= "make"type="text" placeholder="Enter make detail..." data-sb-validations="required" value="" />
+                    <label for="make">Make</label>
+                    
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" id="model" name= "model"type="text" placeholder="Enter car model..." data-sb-validations="required" value=""/>
+                    <label for="model">Model</label>
+                    
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" id="year" name= "year"type="text" placeholder="Enter year..." data-sb-validations="required" value=""/>
+                    <label for="year">Year</label>
+                    
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" id="platenumber" name= "platenumber"type="text" placeholder="Enter your platenumber..." data-sb-validations="required" value="" />
+                    <label for="platenumber">Plate_Number</label>
+                    
+                </div>
+                
+                <br />
+                
+                <div class="d-none" id="submitSuccessMessage">
+                    <div class="text-center mb-3">
+                        <div class="fw-bolder">Form submission successful!</div>
+                        To activate this form, sign up at
+                        <br />
+                        <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                    </div>
+                </div>
+            
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"
+                        id="sendMessageButton">ADD DETAILS</button>
+                        
+                </div>
+            </form>
+<% }
+else{ %>
+    <form action="/g2/store" method="POST" data-sb-form-api-token="API_TOKEN" style="width:70vw ;margin-left:auto; margin-right:auto;">
+        <div class="form-floating">
+            <input class="form-control" id="name" name="fname"type="text" placeholder="Enter your name..." data-sb-validations="required" value="<%- users.fname -%>" readonly/>
+            <label for="fname">First_Name</label>
+            <div class="invalid-feedback" data-sb-feedback="name:required">A First_name is required.</div>
+        </div>
+        <div class="form-floating">
+            <input class="form-control" id="lname" name="lname"type="text" placeholder="Enter your name..." data-sb-validations="required" value="<%- users.lname -%>" readonly/>
+            <label for="lname">Last_Name</label>
+            <div class="invalid-feedback" data-sb-feedback="name:required">A Last_name is required.</div>
+        </div>
+        <div class="form-floating">
+            <input class="form-control" id="license" name="license"type="text" placeholder="Enter your license number..." data-sb-validations="required" value="<%- users.license -%>" readonly/>
+            <label for="license">License Number</label>
+            <div class="invalid-feedback" data-sb-feedback="license:required">A License number is required and must be 8 characters</div>
+        </div>
+        <div class="form-floating">
+            <input class="form-control" id="age" name="age"type="int" placeholder="Enter your age..." data-sb-validations="required" value="<%- users.age -%>" readonly/>
+            <label for="age">Age</label>
+            <div class="invalid-feedback" data-sb-feedback="age:required">An Age is required and must be 8 characters</div>
+        </div></br>
+  
+       <h3>Enter Your Car Details Here:</h3>
+        <div class="form-floating">
+            <input class="form-control" id="make" name= "make"type="text" placeholder="Enter make detail..." data-sb-validations="required" value="<%- users.make -%>" />
+            <label for="make">Make</label>
+            
+        </div>
+        <div class="form-floating">
+            <input class="form-control" id="model" name= "model"type="text" placeholder="Enter car model..." data-sb-validations="required" value="<%- users.model -%>"/>
+            <label for="model">Model</label>
+            
+        </div>
+        <div class="form-floating">
+            <input class="form-control" id="year" name= "year"type="text" placeholder="Enter year..." data-sb-validations="required" value="<%- users.year -%>"/>
+            <label for="year">Year</label>
+            
+        </div>
+        <div class="form-floating">
+            <input class="form-control" id="platenumber" name= "platenumber"type="text" placeholder="Enter your platenumber..." data-sb-validations="required" value="<%- users.platenumber -%>" />
+            <label for="platenumber">Plate_Number</label>
+            
+        </div>
+            
+        <div class="d-none" id="submitSuccessMessage">
+            <div class="text-center mb-3">
+                <div class="fw-bolder">Form submission successful!</div>
+                To activate this form, sign up at
+                <br />
+                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+            </div>
+        </div>
+    
+        
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary"
+                id="sendMessageButton">Update Details</button>
+                
+        </div>            
+    </form>  
+</br>
+<div class="my-5"> 
+    <% if(aId=="-")  { %>
+    <form action= "/user/book_appointment " id="book_appointment" method="POST" data-sb-form-api-token="API_TOKEN" style="width:70vw ;margin-left:auto; margin-right:auto;" >
+        
+        <h3>Select the Time Slot:</h3>
+     
+            <div class="form-floating">
+            <select id="timeSlot" name="timeSlot" class="form-select" aria-label=" select example">
+                <option selected>Time Slots</option>
+                <% for (var i=0; i < appointments.length; i++) { %>
+                    <option value="<%= appointments[i].date+','+appointments[i].time  %>"><%= appointments[i].date %>,<%= appointments[i].time %></option>
+                <% } %>
+            </select>
+            </div>
+            <br />
+            <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center mb-3">
+                    <div class="fw-bolder">Form submission successful!</div>
+                    To activate this form, sign up at
+                    <br />
+                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"
+                    id="sendMessageButton">Book Appointment</button>
+                    
+            </div>
+        </form>
+          <% }
+          else{ %>
+                <h2 style="margin-left: 250px; color:red;">You Have booked your appointment </h2>
+            <% } %>
+         <% } %>  
+        <!-- Footer-->
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>
+    </body>
+</html>
